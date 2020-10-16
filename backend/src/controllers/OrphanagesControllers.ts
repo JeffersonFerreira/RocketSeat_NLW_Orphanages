@@ -32,7 +32,11 @@ export default {
 
         const data: Orphanage = { ...req.body, images: imagePaths }
 
-        const schema = Yup.object().shape({
+        // @ts-ignore
+        // Convert "boolean" to boolean
+        data.open_on_weekends = data.open_on_weekends === 'true'
+
+        const schema = Yup.object<Orphanage>().shape({
             name: Yup.string().required(),
             latitude: Yup.number().required(),
             longitude: Yup.number().required(),
@@ -52,7 +56,6 @@ export default {
         })
 
         const orphanageRepo = getRepository(Orphanage)
-
         const newOrphanage = orphanageRepo.create(data);
         await orphanageRepo.save(newOrphanage)
 
