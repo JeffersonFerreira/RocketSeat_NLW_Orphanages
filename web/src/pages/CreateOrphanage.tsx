@@ -19,16 +19,6 @@ const happyMapIcon = L.icon({
     popupAnchor: [ 0, -60 ]
 })
 
-// interface Interface {
-//     name: string
-//     latitude: number
-//     longitude: number
-//     about: string
-//     instructions: string
-//     opening_hours: string
-//     open_on_weekends: boolean
-// }
-
 export default function CreateOrphanage() {
 
     const history = useHistory();
